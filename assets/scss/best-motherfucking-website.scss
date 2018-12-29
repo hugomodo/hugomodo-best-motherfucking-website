@@ -29,6 +29,10 @@ body{
   text-align: justify;
 }
 
+img {
+  max-width: 100%;
+}
+
 html.contrast{
   /* Accessibility first */
   $darkenBy: 25%;
