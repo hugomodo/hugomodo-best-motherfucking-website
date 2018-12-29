@@ -66,11 +66,13 @@ html.contrast{
 
 html.inverted{
   /* Don't let the motherfucking sun disturb you */
-  background-color: #fff - $bodybgColor;
+  // background-color: #fff - $bodybgColor;
+  background-color: adjust-color(#fff, - red($bodybgColor), - green($bodybgColor), - blue($bodybgColor));
 
   $lightenBy: 15%;
   body{
-    color: #FFF - $bodyTextColor;
+    // color: #FFF - $bodyTextColor;
+    color: adjust-color(#fff, - red($bodyTextColor), - green($bodyTextColor), - blue($bodyTextColor));
   }
 
   div#invmode, div#contrast{
@@ -79,9 +81,11 @@ html.inverted{
   }
 
   blockquote{
-    color: lighten(#FFF - $blockQuoteColor, $lightenBy);
+    // color: lighten(#FFF - $blockQuoteColor, $lightenBy);
+    color: lighten(adjust-color(#FFF, - red($blockQuoteColor), - green($blockQuoteColor), - blue($blockQuoteColor)), $lightenBy);
     &::before{
-      color: lighten(#FFF - $openQuoteColor, $lightenBy);
+      // color: lighten(#FFF - $openQuoteColor, $lightenBy);
+      color: lighten(adjust-color(#FFF, - red($openQuoteColor), - green($openQuoteColor), - blue($openQuoteColor)), $lightenBy);
     }
   }
 
