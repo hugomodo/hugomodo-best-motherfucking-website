@@ -37,6 +37,12 @@ pre {
   padding: 0.5em 0.5em;
 }
 
+figure {
+  figcaption {
+    text-align: center;
+  }
+}
+
 html.contrast{
   /* Accessibility first */
   $darkenBy: 25%;
