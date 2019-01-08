@@ -44,7 +44,8 @@ figure {
 }
 
 article:not(.author) {
-  display:grid;
+  display:flex;
+  flex-flow:column;
   > * {
     order: 2;
   }
