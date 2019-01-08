@@ -65,6 +65,7 @@ footer .authors .author {
   flex-wrap:wrap;
   justify-content: space-between;
   header {
+    width:100%;
     order: 1;
     h4 {
       margin:0;
@@ -73,6 +74,7 @@ footer .authors .author {
   @mixin inline-author-bio($width: 50%) {
     order: 2;
     @media screen and (min-width: 500px) {
+      display: inline-block;
       width: calc(#{$width} - 0.5em)
     }
   }
@@ -84,6 +86,7 @@ footer .authors .author {
     @include inline-author-bio(70%);
   }
   section {
+    width:100%;
     order: 1;
   }
 }
