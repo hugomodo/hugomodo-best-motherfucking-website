@@ -43,6 +43,27 @@ figure {
   }
 }
 
+footer .authors .author {
+  white-space: nowrap;
+  @mixin inline-author-bio($width: 50%) {
+    white-space: normal;
+    @media screen and (min-width: 500px) {
+      vertical-align: top;
+      display: inline-block;
+      width: $width;
+    }
+  }
+  aside.image {
+    @include inline-author-bio(30%);
+  }
+  address {
+    @include inline-author-bio(70%);
+  }
+  section {
+    white-space: normal;
+  }
+}
+
 html.contrast{
   /* Accessibility first */
   $darkenBy: 25%;
