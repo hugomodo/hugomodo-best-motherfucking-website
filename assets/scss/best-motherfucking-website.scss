@@ -43,24 +43,48 @@ figure {
   }
 }
 
-footer .authors .author {
-  white-space: nowrap;
-  @mixin inline-author-bio($width: 50%) {
-    white-space: normal;
-    @media screen and (min-width: 500px) {
-      vertical-align: top;
-      display: inline-block;
-      width: $width;
+article:not(.author) {
+  display:grid;
+  > * {
+    order: 2;
+  }
+  header {
+    order: 1;
+  }
+  figure:first-child {
+    margin: 1em 0;
+    img {
+      display: block;
+      margin: 0 auto;
     }
   }
-  aside.image {
+}
+
+footer .authors .author {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: space-between;
+  header {
+    order: 1;
+    h4 {
+      margin:0;
+    }
+  }
+  @mixin inline-author-bio($width: 50%) {
+    order: 2;
+    @media screen and (min-width: 500px) {
+      width: calc(#{$width} - 0.5em)
+    }
+  }
+  figure:first-child {
+    margin:0;
     @include inline-author-bio(30%);
   }
   address {
     @include inline-author-bio(70%);
   }
   section {
-    white-space: normal;
+    order: 1;
   }
 }
 
