@@ -61,10 +61,13 @@ article:not(.author) {
   }
 }
 
-footer .authors .author {
+article.author {
   display:flex;
   flex-wrap:wrap;
   justify-content: space-between;
+  > * {
+    order: 2;
+  }
   header {
     width:100%;
     order: 1;
@@ -86,7 +89,7 @@ footer .authors .author {
   address {
     @include inline-author-bio(70%);
   }
-  section {
+  section.bio {
     width:100%;
     order: 1;
   }
