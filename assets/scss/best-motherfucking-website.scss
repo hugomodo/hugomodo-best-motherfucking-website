@@ -14,6 +14,44 @@ $motherfuckingColor: #730000;
 $blockQuoteColor: #456;
 $openQuoteColor: #666;
 
+// HugoModo Base styles
+header nav ul, ul.pagination, ul.breadcrumbs {
+  padding: 0;
+  list-style-type: none;
+  li {
+    display: inline-block;
+  }
+}
+
+ul.breadcrumbs {
+  li{
+    &:after {
+      content: "\00BB";
+    }
+    &:last-child:after {
+      content: "";
+    }
+  }
+}
+
+dl { margin: 0; }
+dt {
+  font-weight: bold;
+  &:after {
+    content: ": ";
+  }
+}
+
+pre {
+  overflow-x: scroll;
+}
+
+:not(pre) > code {
+  background-color: rgba(27,31,35,.05);
+}
+// End HugoModo Base styles
+
+
 html{
   background-color: $bodybgColor;
 }
