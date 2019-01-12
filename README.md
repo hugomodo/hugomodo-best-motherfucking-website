@@ -2,7 +2,7 @@
 
 Based on [The Best Motherfucking Website](https://thebestmotherfucking.website), this theme provides minimal style definitions to create a clean, highly readable theme to be used as the base for customisation or for websites with a minimalist feel.
 
-### Installation
+## Installation
 
 ```bash
 git submodule add https://github.com/hugomodo/hugomodo themes/hugomodo
