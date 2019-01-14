@@ -127,7 +127,7 @@ article.author {
   address {
     @include inline-author-bio(70%);
   }
-  section.bio {
+  div.bio {
     width:100%;
     order: 1;
   }
