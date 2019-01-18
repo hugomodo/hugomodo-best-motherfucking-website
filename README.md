@@ -2,6 +2,8 @@
 
 Based on [The Best Motherfucking Website](https://thebestmotherfucking.website), this theme provides minimal style definitions to create a clean, highly readable theme to be used as the base for customisation or for websites with a minimalist feel.
 
+This theme extends the [HugoModo base theme](https://github.com/hugomodo/hugomodo). If you're looking for an easier way to drop in a kick-ass minimalist Hugo theme based on The Best Motherfucking Website, check out [The Best Motherfucking Blog Theme](https://github.com/denysvitali/hugo-thebestmotherfuckingblog) from the original creator of the website, [@denysvitali](https://github.com/denysvitali).
+
 ## Installation
 
 ```bash
