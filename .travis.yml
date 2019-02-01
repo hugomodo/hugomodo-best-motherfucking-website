@@ -16,7 +16,7 @@ jobs:
   include:
     - stage: test
       script:
-        - cd ../hugomodo/exampleSite
+        - cd hugomodo/exampleSite
         - ../bin/hugo --themesDir ../../ --theme hugomodo-best-motherfucking-website
     - stage: deploy
       script:
