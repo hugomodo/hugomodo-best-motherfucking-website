@@ -3,9 +3,8 @@ language: minimal
 os: osx
 
 before_install:
-  - cd ..
-  - git clone https://github.com/hugomodo/hugomodo.git
-  - chmod +x hugomodo/bin/hugo
+  - git clone https://github.com/hugomodo/hugomodo.git ../hugomodo
+  - chmod +x ../hugomodo/bin/hugo
 
 stages:
   - name: test
@@ -16,7 +15,7 @@ jobs:
   include:
     - stage: test
       script:
-        - cd hugomodo/exampleSite
+        - cd ../hugomodo/exampleSite
         - ../bin/hugo --themesDir ../../ --theme hugomodo-best-motherfucking-website
     - stage: deploy
       script:
