@@ -43,3 +43,7 @@ jobs:
         - release_branch=$(echo ${TRAVIS_TAG} | cut -b 2-)
         - git checkout -b $release_branch
         - git push -u origin $release_branch
+        - git checkout standalone
+        - standalone_release_branch=$(echo ${TRAVIS_TAG} | cut -b 2- | awk '{print $1"-standalone"}')
+        - git checkout -b $standalone_release_branch
+        - git push -u origin $standalone_release_branch
