@@ -29,6 +29,10 @@ jobs:
       script:
         - cd ../hugomodo/exampleSite
         - hugo --themesDir ../../ --theme hugomodo-best-motherfucking-website
+        # NOTE: We could theoretically get the theme name automatically from the repo slug.
+        # Travis provides it as TRAVIS_REPO_SLUG in the form organization/repo
+        # We would just need to trim the organization, maybe like so:
+        # echo "${TRAVIS_REPO_SLUG/[a-zA-Z-_]*?\//}"
     - stage: standalone
       script:
         - git checkout standalone
