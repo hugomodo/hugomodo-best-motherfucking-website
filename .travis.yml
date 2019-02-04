@@ -1,13 +1,15 @@
-language: minimal
+dist: xenial
 
-os: osx
+addons:
+  snaps:
+  - name: hugo
+    channel: extended
 
 before_install:
   - git remote set-url origin https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git
   - git config --global user.email "travis@travis-ci.org"
   - git config --global user.name "Travis CI"
   - git clone https://github.com/hugomodo/hugomodo.git ../hugomodo
-  - chmod +x ../hugomodo/bin/hugo
 
 stages:
   - name: test
@@ -21,7 +23,7 @@ jobs:
     - stage: test
       script:
         - cd ../hugomodo/exampleSite
-        - ../bin/hugo --themesDir ../../ --theme hugomodo-best-motherfucking-website
+        - hugo --themesDir ../../ --theme hugomodo-best-motherfucking-website
     - stage: standalone
       script:
         - git checkout -b standalone
