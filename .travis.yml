@@ -5,8 +5,9 @@ addons:
   - name: hugo
     channel: extended
 
-git:
-  depth: false
+# NOTE Alternative to git fetch --unshallow used in dummy step
+# git:
+#   depth: false
 
 before_install:
   - git remote set-url origin https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git
@@ -30,6 +31,7 @@ jobs:
         - hugo --themesDir ../../ --theme hugomodo-best-motherfucking-website
     - stage: dummy
       script:
+        - git fetch --unshallow
         - git checkout standalone
     - stage: standalone
       script:
