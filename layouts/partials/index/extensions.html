@@ -1,0 +1,14 @@
+{{ $context := . }}
+
+{{ range $.Site.Data.layout }}
+  {{ with .index }}
+    {{ $.Scratch.Add "indexExtensions" . }}
+  {{ end }}
+{{ end }}
+
+{{ $indexExtensions := uniq ($.Scratch.Get "indexExtensions") }}
+
+{{ range $indexExtensions }}
+  {{ $string := printf "index/%s" . }}
+  {{ partial $string $context }}
+{{ end }}

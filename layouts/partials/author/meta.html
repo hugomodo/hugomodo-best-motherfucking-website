@@ -1,0 +1,11 @@
+{{ if or .email .social }}
+  <address>
+    <dl>
+      {{ with .email }}
+        <dt>Email</dt>
+        <dd><a href="mailto:{{ . }}">{{ . }}</a></dd>
+      {{ end }}
+      {{ partial "author/meta/social.html" .social }}
+    </dl>
+  </address>
+{{ end }}

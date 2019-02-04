@@ -1,0 +1,19 @@
+<footer id="hugoModule-siteFooter">
+  <div id="hugoModule-siteFooterWrapper">
+    {{ if or .Site.Params.Description .Site.Social }}
+      <section id="hugoModule-siteFooterAboutSection">
+        {{- partial "footer/about.html" . -}}
+      </section>
+    {{ end }}
+
+    <section id="hugoModule-siteFooterNavSection">
+      {{- partial "footer/nav.html" . -}}
+    </section>
+
+    {{ partial "footer/extensions.html" . }}
+
+    <aside id="hugoModule-siteFooterCopyright">
+      {{ partial "footer/copyright.html" . }}
+    </aside>
+  </div>
+</footer>

@@ -1,0 +1,14 @@
+{{ $context := . }}
+
+{{ range $.Site.Data.private }}
+  {{ with .head }}
+    {{ $.Scratch.Add "headExtensions" . }}
+  {{ end }}
+{{ end }}
+
+{{ $headExtensions := uniq ($.Scratch.Get "headExtensions") }}
+
+{{ range $headExtensions }}
+  {{ $string := printf "head/%s" . }}
+  {{ partial $string $context }}
+{{ end }}

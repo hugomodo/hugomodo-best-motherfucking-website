@@ -1,0 +1,7 @@
+<title>
+  {{ if .IsHome }}
+    {{ .Site.Title }} | {{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ else }}{{ .Title }}{{ end }}{{ end }}
+  {{ else }}
+    {{ .Title }}{{ with .Description }} - {{ . }} | {{ $.Site.Title }}{{ else }} | {{ .Site.Title }}{{ with .Site.Params.description }} - {{ . }}{{ end }}{{ end }}
+  {{ end }}
+</title>

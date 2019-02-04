@@ -1,0 +1,33 @@
+<!-- SCSS -->
+{{ $inServerMode := .Site.IsServer }}
+
+{{ range $.Site.Data.assets }}
+  {{ with .scss }}
+    {{ $.Scratch.Add "styles" . }}
+  {{ end }}
+{{ end }}
+
+{{ $styles := uniq ($.Scratch.Get "styles") }}
+
+{{ $cssOpts      := cond ($inServerMode) (dict "enableSourceMap" true) (dict "outputStyle" "compressed") }}
+
+{{ range $styles }}
+  {{ $path := printf "scss/%s" . }}
+  {{ $resource := resources.Get $path | resources.ExecuteAsTemplate "style.scss" $ | toCSS $cssOpts }}
+
+  {{ $.Scratch.Add "styleresources" (slice $resource) }}
+{{ end }}
+
+{{ $resources := $.Scratch.Get "styleresources" }}
+
+{{ if $resources }}
+  {{ $concatenated := $resources | resources.Concat "css/style.css" }}
+
+  {{ if $inServerMode }}
+    {{ $css := $concatenated }}
+    <link rel="stylesheet" type="text/css" href="{{ $css.RelPermalink }}">
+  {{ else }}
+    {{ $css := $concatenated | minify | fingerprint }}
+    <link rel="stylesheet" type="text/css" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
+  {{ end }}
+{{ end }}

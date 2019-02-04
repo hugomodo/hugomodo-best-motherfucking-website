@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}" itemscope itemtype="http://schema.org/WebPage">
+  {{- partial "head.html" . -}}
+  <body id="hugoModule-body">
+    <div id="hugoModule-bodyWrapper">
+      {{- partial "header.html" . -}}
+
+      {{- block "main" . }}{{- end }}
+
+      {{- partial "footer.html" . -}}
+
+      {{- partial "foot.html" . -}}
+    </div>
+  </body>
+</html>

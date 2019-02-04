@@ -1,0 +1,25 @@
+{{ define "main" }}
+  <main id="hugoModule-main">
+    <header id="hugoModule-mainHeader">
+      {{ partial "shared/breadcrumb-nav.html" . }}
+    </header>
+    <article id="hugoModule-mainArticle">
+      {{ partial "article/featured_image.html" . }}
+      {{ partial "article/header.html" . }}
+      {{ partial "article/meta.html" . }}
+      {{ partial "article/toc.html" . }}
+      {{ partial "article/content.html" . }}
+      {{ if .Param "authors" }}
+        {{ partial "article/authors.html" . }}
+      {{ else }}
+        {{ if .Site.Author }}
+          {{ partial "article/author.html" . }}
+        {{ end }}
+      {{ end }}
+    </article>
+    {{ partial "article/related.html" . }}
+    <footer id="hugoModule-mainFooter">
+      {{ partial "article/comments.html" . }}
+    </footer>
+  </main>
+{{ end }}

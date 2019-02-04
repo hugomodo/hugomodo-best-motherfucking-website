@@ -1,0 +1,23 @@
+{{ $taxo := "authors" }}
+{{ $list := .Param $taxo }}
+{{ with $list}}
+  <footer>
+    {{/*
+      NOTE: that the HTML5 spec allows the footer to contain header and footer
+      elements itself, if these are children of a sectioning element.
+      https://www.w3.org/TR/html5/sections.html#the-footer-element
+    */}}
+    <section class="authors">
+      <header>
+        <h2>Author{{ if gt (len $list) 1 }}s{{ end }}</h2>
+      </header>
+      {{ range . }}
+        {{ $name := . }}
+        {{ $path := urlize $name }}
+        {{ with ($.Site.GetPage (printf "/%s/%s" $taxo $path)) }}
+          {{ partial "author/preview.html" . }}
+        {{ end }}
+      {{ end }}
+    </section>
+  </footer>
+{{ end }}

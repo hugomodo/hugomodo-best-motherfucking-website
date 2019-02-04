@@ -1,0 +1,8 @@
+{{/* TODO: Deprecated or removed? */}}
+
+{{ if or .Params.Image .Params.Thumbnail }}
+  <figure>
+    {{/* TODO: Share logic from article and enable image processing. */}}
+    <img src="{{ with .Params.Image }}{{ . | relURL }}{{ else }}{{ .Params.Thumbnail | relURL }}{{ end }}"/>
+  </figure>
+{{ end }}
