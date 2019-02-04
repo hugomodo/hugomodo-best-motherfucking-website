@@ -32,13 +32,13 @@ jobs:
         - hugo --themesDir ../../ --theme $theme_name
     - stage: standalone
       script:
-        - git checkout standalone
+        - git checkout -B standalone
         - git reset master --hard
         - rm -f config.toml
         - cp -rn ../hugomodo/. . || true # TODO: cp returns non-zero exit code but appears to succeed regardless
         - git add -A
         - git commit -m "rebuild from master"
-        - git push origin standalone --force
+        - git push -u origin standalone --force
     - stage: deploy
       script:
         - release_branch=$(echo ${TRAVIS_TAG} | cut -b 2-)
