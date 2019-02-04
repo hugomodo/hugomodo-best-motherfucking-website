@@ -33,7 +33,7 @@ jobs:
     - stage: standalone
       script:
         - git checkout -B standalone
-        - git reset master --hard
+        - git reset master --hard # NOTE: unnecessary with the -B flag used above
         - rm -f config.toml
         - cp -rn ../hugomodo/. . || true # TODO: cp returns non-zero exit code but appears to succeed regardless
         - git add -A
