@@ -28,7 +28,8 @@ jobs:
         - git reset master --hard
         - rm -f config.toml
         - cp -rn ../hugomodo/. .
-        - git commit -A -m "rebuild from master"
+        - git add -A
+        - git commit -m "rebuild from master"
         - git push origin standalone --force # or --force-with-lease (but I have to consider the implications)
     - stage: deploy
       script:
