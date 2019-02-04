@@ -13,6 +13,7 @@ before_install:
 
 stages:
   - name: test
+  - name: dummy
   - name: standalone
     if: branch = master
   - name: deploy
@@ -24,6 +25,9 @@ jobs:
       script:
         - cd ../hugomodo/exampleSite
         - hugo --themesDir ../../ --theme hugomodo-best-motherfucking-website
+    - stage: dummy
+      script:
+        - git co origin/standalone
     - stage: standalone
       script:
         - git checkout -b standalone
