@@ -5,9 +5,9 @@ addons:
   - name: hugo
     channel: extended
 
-# NOTE Alternative to git fetch --unshallow used in dummy step
-# git:
-#   depth: false
+# NOTE: Turn off depth flag to access other branches.
+git:
+  depth: false
 
 before_install:
   - git remote set-url origin https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git
@@ -29,18 +29,15 @@ jobs:
       script:
         - cd ../hugomodo/exampleSite
         - hugo --themesDir ../../ --theme hugomodo-best-motherfucking-website
-    - stage: dummy
-      script:
-        - git fetch --unshallow
-        - git checkout standalone
     - stage: standalone
       script:
-        - git checkout -b standalone
+        - git checkout standalone
+        - git reset master --hard
         - rm -f config.toml
         - cp -rn ../hugomodo/. . || true # TODO: cp returns non-zero exit code but appears to succeed regardless
         - git add -A
         - git commit -m "rebuild from master"
-        - git push -u origin standalone --force
+        - git push origin standalone --force
     - stage: deploy
       script:
         - release_branch=$(echo ${TRAVIS_TAG} | cut -b 2-)
