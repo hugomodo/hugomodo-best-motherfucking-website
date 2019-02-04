@@ -1,0 +1,12 @@
+{{ with .Site.Author }}
+  <footer>
+    <section class="authors">
+      <header>
+        <h2>Author</h2>
+      </header>
+      <article class="author">
+        {{ partial "author.html" (dict "author" . "headerDepth" 4) }}
+      </article>
+    </section>
+  </footer>
+{{ end }}

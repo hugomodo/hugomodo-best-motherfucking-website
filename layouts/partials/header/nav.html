@@ -1,0 +1,47 @@
+{{/*
+  NOTE: Attempted to use - if and .Site.Menus.main (eq .Site.SectionPagesMenu "main")
+  But Hugo complains about lack of SectionPagesMenu variable. It isn't accessible through SiteInfo.
+  SEE ALSO: "NOTE: on precedence..." at foot of this file.
+  SEE ALSO: header/nav.html
+*/}}
+{{ if .Site.Menus.main }}
+  {{/* Section Menu for Lazy Bloggers */}}
+  <nav id="hugoModule-siteNav">
+    <ul>
+      {{ $currentPage := . }}
+      {{ range .Site.Menus.main }}
+        <li>
+          <a class="sidebar-nav-item{{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active{{end}}" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
+        </li>
+      {{ end }}
+    </ul>
+  </nav>
+{{ else }}
+  {{/* Default HugoModo menu */}}
+  <nav id="hugoModule-siteNav">
+    <ul>
+      {{ $sections := .Site.Sections }}
+      {{ $pages := where .Site.RegularPages "Section" "" }}
+      {{ range (union $sections $pages) }}
+        {{ if not (eq .Name .Site.Title) }}
+          <li>
+            <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Name }}</a>
+          </li>
+        {{ end }}
+      {{ end }}
+    </ul>
+  </nav>
+{{ end }}
+
+{{/*
+  NOTE: on precedence...
+
+  'main' > 'lazy' > 'default'
+
+  If default is always fallen back to... how would one set a menu to not display at all?
+
+  Typically one would leave it out of their markup. However, we have it in our markup.
+
+  Okay, we'll assume for now that everybody wants a menu.
+
+*/}}

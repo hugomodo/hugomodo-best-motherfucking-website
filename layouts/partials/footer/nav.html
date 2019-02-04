@@ -1,0 +1,54 @@
+<h2>Sitemap</h2>
+
+{{/* SEE ALSO: header/nav.html */}}
+{{ if .Site.Menus.footer }}
+  {{/* Section Menu for Lazy Bloggers */}}
+  <nav id="hugoModule-siteFooterNav">
+    <ul>
+      {{ $currentPage := . }}
+      {{ range .Site.Menus.footer }}
+        <li>
+          <a class="sidebar-nav-item{{if or ($currentPage.IsMenuCurrent "footer" .) ($currentPage.HasMenuCurrent "footer" .) }} active{{end}}" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
+        </li>
+      {{ end }}
+    </ul>
+  </nav>
+{{ else }}
+  <nav id="hugoModule-siteFooterNav">
+    <ul>
+      <li>
+        <a href="/">Home</a>
+      </li>
+      {{ $currentPage := . }}
+      {{ range .Site.Menus.footer }}
+        <li>
+          <a href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
+        </li>
+      {{ end }}
+      {{ range (where .Site.Sections "Params.headless" "!=" "true") }}
+        <li>
+          <a href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
+        </li>
+      {{ end }}
+      {{ range where .Site.RegularPages "Section" "" }}
+        {{ if not (eq .Name .Site.Title) }}
+          <li>
+            <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Name }}</a>
+          </li>
+        {{ end }}
+      {{ end }}
+      {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
+        {{ if len $taxonomy }}
+          <li>
+            <a href="{{ "/" | relURL}}{{ $taxonomyname | urlize }}" title="{{range last 1 (split $taxonomyname "/") }}{{ . | humanize }}{{ end }}">{{range last 1 (split $taxonomyname "/") }}{{ . | humanize }}{{ end }}</a>
+          </li>
+        {{ end }}
+      {{ end }}
+      <li>
+        <a title="Subscribe" aria-label="Subscribe" href="/index.xml">
+          RSS Feed
+        </a>
+      </li>
+    </ul>
+  </nav>
+{{ end }}

@@ -1,0 +1,6 @@
+js = []
+
+scss = [
+  "normalize.scss",
+  "hugomodo.scss"
+]
