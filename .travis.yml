@@ -27,7 +27,7 @@ jobs:
         - hugo --themesDir ../../ --theme hugomodo-best-motherfucking-website
     - stage: dummy
       script:
-        - git co origin/standalone
+        - git commit origin/standalone
     - stage: standalone
       script:
         - git checkout -b standalone
