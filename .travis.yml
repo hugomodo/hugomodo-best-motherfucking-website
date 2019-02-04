@@ -5,6 +5,9 @@ addons:
   - name: hugo
     channel: extended
 
+git:
+  depth: false
+
 before_install:
   - git remote set-url origin https://${GITHUB_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git
   - git config --global user.email "travis@travis-ci.org"
@@ -27,7 +30,7 @@ jobs:
         - hugo --themesDir ../../ --theme hugomodo-best-motherfucking-website
     - stage: dummy
       script:
-        - git checkout origin/standalone
+        - git checkout standalone
     - stage: standalone
       script:
         - git checkout -b standalone
