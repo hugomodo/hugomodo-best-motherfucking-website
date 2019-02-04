@@ -30,7 +30,7 @@ jobs:
         - cp -rn ../hugomodo/. .
         - git add -A
         - git commit -m "rebuild from master"
-        - git push origin standalone --force # or --force-with-lease (but I have to consider the implications)
+        - git push origin standalone --force
     - stage: deploy
       script:
         - release_branch=$(echo ${TRAVIS_TAG} | cut -b 2-)
