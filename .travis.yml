@@ -24,13 +24,12 @@ jobs:
         - ../bin/hugo --themesDir ../../ --theme hugomodo-best-motherfucking-website
     - stage: standalone
       script:
-        - git checkout standalone
-        - git reset master --hard
+        - git checkout -b standalone
         - rm -f config.toml
         - cp -rn ../hugomodo/. .
         - git add -A
         - git commit -m "rebuild from master"
-        - git push origin standalone --force
+        - git push -u origin standalone --force
     - stage: deploy
       script:
         - release_branch=$(echo ${TRAVIS_TAG} | cut -b 2-)
