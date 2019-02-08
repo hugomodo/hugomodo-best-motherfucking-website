@@ -99,7 +99,7 @@ article:not(.author) {
   }
 }
 
-article.author {
+article.author > .hugoComponent-authorWrapper {
   display:flex;
   flex-wrap:wrap;
   justify-content: space-between;
