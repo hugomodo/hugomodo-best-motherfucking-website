@@ -1,0 +1,18 @@
+{{ if .Site.Params.logo }}
+  <figure id="hugoModule-siteTitle" class="bmf-defaultLogo">
+    <a title="{{ .Site.Title }}" href="/">
+      <img src="{{ .Site.Params.logo }}" alt="{{ .Site.Title }} Logo"/>
+    </a>
+  </figure>
+  {{ if .Site.Params.logoInverted }}
+    <figure id="hugoModule-siteTitle" class="bmf-invertedLogo">
+      <a title="{{ .Site.Title }}" href="/">
+        <img src="{{ .Site.Params.logoInverted }}" alt="{{ .Site.Title }} Logo"/>
+      </a>
+    </figure>
+  {{ end }}
+{{ else }}
+  <strong id="hugoModule-siteTitle">
+    <a title="{{ .Site.Title }}" href="/">{{ .Site.Title }}</a>
+  </strong>
+{{ end }}

@@ -1,3 +1,15 @@
 header#hugoModule-siteHeader {
   text-align: center;
 }
+
+figure#hugoModule-siteTitle {
+  max-width:50%;
+  margin:0 auto;
+}
+
+.bmf-invertedLogo { display: none; }
+
+html.inverted {
+  .bmf-defaultLogo { display: none; }
+  .bmf-invertedLogo { display: block; }
+}
