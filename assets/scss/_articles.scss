@@ -1,0 +1,51 @@
+article:not(.author) {
+  display:flex;
+  flex-flow:column;
+  > * {
+    order: 2;
+  }
+  header {
+    order: 1;
+  }
+  figure:first-child {
+    margin: 1em 0;
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
+
+article.author {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: space-between;
+  > * {
+    order: 2;
+  }
+  header {
+    width:100%;
+    order: 1;
+    h4 {
+      margin:0;
+    }
+  }
+  @mixin inline-author-bio($width: 50%) {
+    order: 2;
+    @media screen and (min-width: 500px) {
+      display: inline-block;
+      width: calc(#{$width} - 0.5em)
+    }
+  }
+  figure:first-child {
+    margin:0;
+    @include inline-author-bio(30%);
+  }
+  address {
+    @include inline-author-bio(70%);
+  }
+  div.bio {
+    width:100%;
+    order: 1;
+  }
+}

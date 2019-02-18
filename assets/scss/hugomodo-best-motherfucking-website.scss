@@ -1,0 +1,11 @@
+// Allows overrides in child themes and sites
+@import "variables";
+
+// Main styles taken from The Best Motherfucking Website
+@import "best-motherfucking-website/best-motherfucking-website";
+
+// Hugo-specific resets
+@import "base";
+
+// Appropriately order and layout articles and authors
+@import "articles";

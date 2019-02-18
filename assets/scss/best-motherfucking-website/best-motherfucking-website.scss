@@ -1,56 +1,18 @@
-$bodybgColor: #fefefe;
-$bodyTextColor: #454545;
+$bodybgColor: #fefefe !default;
+$bodyTextColor: #454545 !default;
 
 // Link Colors
-$linkColor: #07A;
-$linkVisitedColor: #941352;
-$linkVisitedInvertedColor: #ac5a82;
+$linkColor: #07A !default;
+$linkVisitedColor: #941352 !default;
+$linkVisitedInvertedColor: #ac5a82 !default;
 // ===============
 
-$wrongColor: #c0392b;
-$shittyBlue: #0000EE;
-$shittyViolet: #551A8B;
-$motherfuckingColor: #730000;
-$blockQuoteColor: #456;
-$openQuoteColor: #666;
-
-// HugoModo Base styles
-header nav ul, ul.pagination, ul.breadcrumbs {
-  padding: 0;
-  list-style-type: none;
-  li {
-    display: inline-block;
-  }
-}
-
-ul.breadcrumbs {
-  li{
-    &:after {
-      content: "\00BB";
-    }
-    &:last-child:after {
-      content: "";
-    }
-  }
-}
-
-dl { margin: 0; }
-dt {
-  font-weight: bold;
-  &:after {
-    content: ": ";
-  }
-}
-
-pre {
-  overflow-x: scroll;
-}
-
-:not(pre) > code {
-  background-color: rgba(27,31,35,.05);
-}
-// End HugoModo Base styles
-
+$wrongColor: #c0392b !default;
+$shittyBlue: #0000EE !default;
+$shittyViolet: #551A8B !default;
+$motherfuckingColor: #730000 !default;
+$blockQuoteColor: #456 !default;
+$openQuoteColor: #666 !default;
 
 html{
   background-color: $bodybgColor;
@@ -78,58 +40,6 @@ pre {
 figure {
   figcaption {
     text-align: center;
-  }
-}
-
-article:not(.author) {
-  display:flex;
-  flex-flow:column;
-  > * {
-    order: 2;
-  }
-  header {
-    order: 1;
-  }
-  figure:first-child {
-    margin: 1em 0;
-    img {
-      display: block;
-      margin: 0 auto;
-    }
-  }
-}
-
-article.author {
-  display:flex;
-  flex-wrap:wrap;
-  justify-content: space-between;
-  > * {
-    order: 2;
-  }
-  header {
-    width:100%;
-    order: 1;
-    h4 {
-      margin:0;
-    }
-  }
-  @mixin inline-author-bio($width: 50%) {
-    order: 2;
-    @media screen and (min-width: 500px) {
-      display: inline-block;
-      width: calc(#{$width} - 0.5em)
-    }
-  }
-  figure:first-child {
-    margin:0;
-    @include inline-author-bio(30%);
-  }
-  address {
-    @include inline-author-bio(70%);
-  }
-  div.bio {
-    width:100%;
-    order: 1;
   }
 }
 
