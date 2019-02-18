@@ -1,5 +1,6 @@
 head:
 - openSansGoogleFont.html
+- setPresentationMode.html
 
 foot:
 - controls.html
