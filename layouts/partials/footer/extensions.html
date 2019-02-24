@@ -1,0 +1,14 @@
+{{ $context := . }}
+
+{{ range $.Site.Data.layout }}
+  {{ with .footer }}
+    {{ $.Scratch.Add "footerExtensions" . }}
+  {{ end }}
+{{ end }}
+
+{{ $footerExtensions := uniq ($.Scratch.Get "footerExtensions") }}
+
+{{ range $footerExtensions }}
+  {{ $string := printf "footer/%s" . }}
+  {{ partial $string $context }}
+{{ end }}

@@ -1,0 +1,32 @@
+{{ $path :=  .Data.Term | printf "%s/%s/_index.html" .Data.Plural }}
+{{ $termpage := $.Site.GetPage $path }}
+
+{{ with $termpage }}
+  {{ $.Scratch.Set "term" $termpage }}
+{{ else }}
+  {{ $.Scratch.Set "term" . }}
+{{ end }}
+{{ $term := $.Scratch.Get "term" }}
+
+{{ with $term }}
+  <article id="hugoModule-mainArticle">
+    {{ partial "article/featured_image.html" . }} <!--figure-->
+
+    {{ partial "shared/breadcrumb.html" . }} <!--aside-->
+
+    {{ partial "article/header.html" . }} <!--header-->
+
+    {{/*
+      TODO: Content Shim doesn't work, seemingly because taxonomyTerm pages cannot utilise
+      RawContent. See hugomodo-shortcode-partials or hugomodo-image-processing for a more
+      complete note.
+    */}}
+    <div>{{ .Content }}</div> <!--div-->
+
+    {{ range $.Paginator.Pages }}
+      {{ partial "article/preview.html" . }}
+    {{ end }}
+
+    {{ partial "section/pagination.html" . }} <!--aside-->
+  </article>
+{{ end }}

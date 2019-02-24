@@ -1,0 +1,10 @@
+<h2>About {{ .Site.Title }}</h2>
+
+{{ with .Site.Params.Description }}
+  <p>{{ . }}</p>
+{{ end }}
+
+{{ with .Site.Social }}
+  {{/* TODO: Move social meta to shared. */}}
+  {{ partial "author/meta.html" (dict "social" .) }}
+{{ end }}

@@ -1,0 +1,25 @@
+{{ define "header" }}{{- partial "header.html" . -}}{{ end }}
+{{ define "footer" }}{{- partial "footer.html" . -}}{{ end }}
+
+{{ define "main" }}
+  <main id="hugoModule-main">
+    <article id="hugoModule-mainArticle">
+      {{ partial "article/featured_image.html" . }}
+      {{ partial "article/header.html" . }}
+      <div id="hugoModule-mainArticleContent">
+        {{ .Content }}
+      </div>
+
+      {{ partial "index/extensions.html" . }}
+
+      {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+      {{ range (.Paginate $pages.ByDate.Reverse.ByWeight).Pages }}
+        {{ partial "article/preview.html" . }}
+      {{ end }}
+
+      <footer id="hugoModule-mainArticleFooter">
+        {{ partial "section/pagination.html" . }}
+      </footer>
+    </article>
+  </main>
+{{ end }}

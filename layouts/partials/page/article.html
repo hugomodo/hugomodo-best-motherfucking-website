@@ -1,0 +1,31 @@
+<article id="hugoModule-mainArticle">
+  {{ partial "article/featured_image.html" . }} <!--figure-->
+
+  {{ partial "shared/breadcrumb.html" . }} <!--aside-->
+
+  {{ partial "article/header.html" . }} <!--header-->
+
+  {{ partial "article/meta.html" . }} <!--footer-->
+
+  {{ partial "article/toc.html" . }} <!--nav-->
+
+  {{ partial "article/content.html" . }} <!--div-->
+
+  {{ with .Param "blocks" }}
+    {{ range . }}
+      {{ partial "blocks/content.html" . }} <!--section-->
+    {{ end }}
+  {{ end }}
+
+  {{ if .Param "authors" }}
+    {{ partial "article/authors.html" . }} <!--aside-->
+  {{ else }}
+    {{ if .Site.Author }}
+      {{ partial "article/author.html" . }} <!--aside-->
+    {{ end }}
+  {{ end }}
+
+  {{ partial "article/related.html" . }} <!--aside-->
+
+  {{ partial "article/comments.html" . }} <!--section-->
+</article>

@@ -1,0 +1,25 @@
+{{/*
+  NOTE: The conditional below is a little verbose, so let's explain it.
+
+  First, if .TableOfContents then we can continue to check other huge condition.
+  That condition is this...
+
+  EITHER
+    .Params.include_toc is true
+  OR
+    .Site.Params.include_toc is true AND .Params.include_toc is not set
+
+  In English:
+
+  If toc is true for page, render.
+  Else if toc is true for site and isn't actually set (would be false) for page, render.
+*/}}
+
+{{ if and .TableOfContents (or .Params.include_toc (and .Site.Params.include_toc (not (isset .Params "include_toc")))) }}
+  <nav>
+    <header>
+      <h2>Table of Contents</h2>
+    </header>
+    {{ .TableOfContents }}
+  </nav>
+{{ end }}

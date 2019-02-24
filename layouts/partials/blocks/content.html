@@ -1,0 +1,6 @@
+<section id="hugoBlock-{{ .title | anchorize }}" class="hugoComponent-blockSection">
+  <h2 id="{{ .title | anchorize }}" class="hugoComponent-blockSectionTitle">{{ .title }}</h2>
+  <div class="hugoComponent-blockSectionContent">
+    {{ .content | markdownify }}
+  </div>
+</section>

@@ -1,0 +1,14 @@
+{{ $context := . }}
+
+{{ range $.Site.Data.private }}
+  {{ with .foot }}
+    {{ $.Scratch.Add "footExtensions" . }}
+  {{ end }}
+{{ end }}
+
+{{ $footExtensions := uniq ($.Scratch.Get "footExtensions") }}
+
+{{ range $footExtensions }}
+  {{ $string := printf "foot/%s" . }}
+  {{ partial $string $context }}
+{{ end }}

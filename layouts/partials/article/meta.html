@@ -1,0 +1,13 @@
+<footer class="hugoComponent-articleMeta">
+  <dl>
+    {{ partial "article/meta/date.html" . }}
+
+    {{ if ne (.Date.Format "02 Jan 2006") (.Lastmod.Format "02 Jan 2006") }}
+      {{ partial "article/meta/lastmod.html" . }}
+    {{ end }}
+
+    {{ partial "article/meta/reading-time.html" . }}
+
+    {{ partial "article/meta/tags.html" . }}
+  </dl>
+</footer>

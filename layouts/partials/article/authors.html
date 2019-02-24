@@ -1,0 +1,16 @@
+{{ $taxo := "authors" }}
+{{ $list := .Param $taxo }}
+{{ with $list}}
+  <aside class="authors">
+    <header>
+      <h2>Author{{ if gt (len $list) 1 }}s{{ end }}</h2>
+    </header>
+    {{ range . }}
+      {{ $name := . }}
+      {{ $path := urlize $name }}
+      {{ with ($.Site.GetPage (printf "/%s/%s" $taxo $path)) }}
+        {{ partial "author/preview.html" . }}
+      {{ end }}
+    {{ end }}
+  </aside>
+{{ end }}

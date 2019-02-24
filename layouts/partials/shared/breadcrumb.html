@@ -1,0 +1,49 @@
+<aside id="hugoModule-breadcrumb">
+  <nav class="hugoComponent-breadcrumbNav" aria-label="breadcrumb">
+    <ul class="breadcrumbs">
+      {{ template "breadcrumbnav" (dict "p1" . "p2" .) }}
+    </ul>
+  </nav>
+</aside>
+
+{{ define "breadcrumbnav" }}
+  {{ if .p1.Parent }}
+    {{ template "breadcrumbnav" (dict "p1" .p1.Parent "p2" .p2 )  }}
+  {{ else if not .p1.IsHome }}
+    {{ template "breadcrumbnav" (dict "p1" .p1.Site.Home "p2" .p2 )  }}
+  {{ end }}
+
+  {{ if eq .p1.Kind "taxonomy" }}
+    {{ $segments := (split .p1.Data.Plural "/") }}
+    {{ range $index, $element := $segments }}
+      <li>
+        <a href="{{ "/" | relURL}}{{ delimit (first (add $index 1) $segments) "/" }}" title="{{ $element | humanize }}">{{ $element | humanize }}</a>
+      </li>
+    {{ end }}
+  {{ else }}
+    {{ if eq .p1.Kind "taxonomyTerm" }}
+      {{ $segments := (split .p1.Data.Plural "/") }}
+      {{ range $index, $element := $segments }}
+        {{ if ne (add $index 1) (len $segments) }}
+          <li>
+            <a href="{{ "/" | relURL}}{{ delimit (first (add $index 1) $segments) "/" }}" title="{{ $element | humanize }}">{{ $element | humanize }}</a>
+          </li>
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+
+  <li class="{{ if eq .p1 .p2 }}active{{ end }}">
+    {{ if eq .p1 .p2 }}
+      {{ if eq .p1.Kind "taxonomyTerm" }}
+        {{ range last 1 (split .p1.Title "/") }}
+          {{ . }}
+        {{ end }}
+      {{ else }}
+        {{ .p1.Title }}
+      {{ end }}
+    {{ else }}
+      <a href="{{ .p1.Permalink }}">{{ if .p1.IsHome }}{{ .p1.Site.Title }}{{ else }}{{ .p1.Title }}{{ end }}</a>
+    {{ end }}
+  </li>
+{{ end }}

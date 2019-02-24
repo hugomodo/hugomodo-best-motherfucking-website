@@ -1,0 +1,23 @@
+{{ $page := . }}
+{{ $siteTaxonomies := .Site.Taxonomies }}
+
+{{ range $taxonomy, $tags := $siteTaxonomies }}
+  {{ $taxo := $taxonomy }} <!-- Use the plural form here -->
+  {{ $list := $page.Param $taxo }}
+  {{ with $list}}
+    <div>
+      <dt>{{range last 1 (split $taxo "/") }}{{ . | humanize }}{{ end }}</dt>
+      {{ range . }}
+        {{ $name := . }}
+        {{ $path := urlize $name }}
+        {{ with (printf "/%s/%s" $taxo $path) }}
+          <dd>
+            <a href="{{ . }}">
+              {{ $name }}
+            </a>
+          </dd>
+        {{ end }}
+      {{ end }}
+    </div>
+  {{ end }}
+{{ end }}

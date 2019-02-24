@@ -1,0 +1,18 @@
+<article id="hugoModule-mainArticle">
+  {{ partial "article/featured_image.html" . }} <!--figure-->
+
+  {{ partial "shared/breadcrumb.html" . }} <!--aside-->
+
+  {{ partial "article/header.html" . }} <!--header-->
+
+  {{/*
+    TODO: Content Shim doesn't work, seemingly because section pages cannot utilise
+    RawContent. See hugomodo-shortcode-partials or hugomodo-image-processing for a more
+    complete note.
+  */}}
+  <div>{{ .Content }}</div> <!--div-->
+
+  {{ partial "article/list.html" . }} <!--div-->
+
+  {{ partial "section/pagination.html" . }} <!--aside-->
+</article>

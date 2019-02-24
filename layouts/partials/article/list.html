@@ -1,0 +1,7 @@
+<div id="hugoModule-articleList">
+  {{ $sections := .Sections }}
+  {{ $pages := .Pages }}
+  {{ range (.Paginate (union $sections $pages).ByDate.Reverse.ByWeight).Pages }}
+    {{ partial "article/preview.html" . }} <!--article-->
+  {{ end }}
+</div>

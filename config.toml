@@ -1,3 +1,2 @@
-theme = [
-  "hugomodo"
-]
+[Params]
+  show_comments = true

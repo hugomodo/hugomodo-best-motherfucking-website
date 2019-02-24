@@ -1,0 +1,30 @@
+<article class="hugoComponent-article">
+  {{ partial "article/images/thumbnail.html" . }}
+  <header  class="hugoComponent-articleHeader">
+    <h2>
+      <a href="{{ .Permalink }}">
+        {{ .Title }}
+      </a>
+    </h2>
+  </header>
+  {{ partial "article/meta.html" . }}
+
+  {{/*
+    NOTE: Replaced section nesting for article content with div nesting to improve
+          semantics/accessibility. div has no semantic meaning, but provides us
+          styling capabilities that may otherwise be absent.
+          Do consider: Is it necessary? Is it useful?
+  */}}
+  <div>
+    {{ with .Description }}
+      <p>{{ . }}</p>
+    {{ else }}
+      <p>
+        {{ .Summary }}
+        {{ if .Truncated }}
+          <a href="{{ .Permalink }}">More &hellip;</a>
+        {{ end }}
+      </p>
+    {{ end }}
+  </div>
+</article>

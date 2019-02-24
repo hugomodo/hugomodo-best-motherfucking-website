@@ -1,0 +1,9 @@
+{{/* TODO: Deprecated or removed? */}}
+
+{{ with .Params.LongBio }}
+  <div class="bio">
+    <p>{{ . }}</p>
+  </div>
+{{ else }}
+  {{ partial "article/content.html" . }}
+{{ end }}

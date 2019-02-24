@@ -1,0 +1,40 @@
+{{ define "header" }}{{- partial "header.html" . -}}{{ end }}
+{{ define "footer" }}{{- partial "footer.html" . -}}{{ end }}
+
+{{ define "main" }}
+  <main id="hugoModule-main">
+    <article id="hugoModule-mainArticle">
+      {{ partial "article/featured_image.html" . }}
+      {{ partial "shared/breadcrumb.html" . }}
+      {{ partial "terms/header.html" . }}
+      {{/*
+        NOTE: Replaced section nesting for article content with div nesting to improve
+              semantics/accessibility. div has no semantic meaning, but provides us
+              styling capabilities that may otherwise be absent.
+              Do consider: Is it necessary? Is it useful?
+      */}}
+      <div id="hugoModule-mainArticleContent">
+        {{ .Content }}
+      </div>
+
+      {{ $pages := .Pages }}
+      {{ range (.Paginate $pages.ByDate.Reverse.ByWeight).Pages }}
+        {{ $path :=  .Data.Term | printf "%s/%s/_index.html" .Data.Plural }}
+        {{ $termpage := $.Site.GetPage $path }}
+
+        {{ with $termpage }}
+          {{ $.Scratch.Set "term" $termpage }}
+        {{ else }}
+          {{ $.Scratch.Set "term" . }}
+        {{ end }}
+        {{ $term := $.Scratch.Get "term" }}
+
+        {{ with $term }}
+          {{ partial "author/preview.html" . }}
+        {{ end }}
+      {{ end }}
+
+      {{ partial "section/pagination.html" . }}
+    </article>
+  </main>
+{{ end }}

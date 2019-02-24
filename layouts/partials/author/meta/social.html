@@ -1,0 +1,31 @@
+{{ with . }}
+  {{ with .website }}
+    <dt>Website</dt>
+    <dd><a href="{{ . }}">{{ . }}</a></dd>
+  {{ end }}
+  {{ with .github }}
+    <dt>GitHub</dt>
+    <dd><a href="https://github.com/{{ . }}">{{ . }}</a></dd>
+  {{ end }}
+  {{ with .facebook }}
+    <dt>Facebook</dt>
+    <dd><a href="https://facebook.com/{{ . }}">{{ . }}</a></dd>
+  {{ end }}
+  {{ with .twitter }}
+    <dt>Twitter</dt>
+    <dd><a href="https://twitter.com/{{ . }}">{{ . }}</a></dd>
+  {{ end }}
+  {{ with .instagram }}
+    <dt>Instagram</dt>
+    <dd><a href="https://instagram.com/{{ . }}">{{ . }}</a></dd>
+  {{ end }}
+  {{ with .linkedin }}
+    <dt>LinkedIn</dt>
+    <dd><a href="https://linkedin.com/in/{{ . }}">{{ . }}</a></dd>
+  {{ end }}
+  {{ with .skype }}
+    <dt>Skype</dt>
+    {{/* NOTE: ?userinfo doesn't appear to work. Skype features greatly reduced over time. */}}
+    <dd><a href="skype:{{ . }}">{{ . }}</a></dd>
+  {{ end }}
+{{ end }}

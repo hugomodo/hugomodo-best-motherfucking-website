@@ -1,0 +1,8 @@
+{{ define "header" }}{{- partial "header.html" . -}}{{ end }}
+{{ define "footer" }}{{- partial "footer.html" . -}}{{ end }}
+
+{{ define "main" }}
+  <main id="hugoModule-main">
+    {{ partial "section/article.html" . }}
+  </main>
+{{ end }}

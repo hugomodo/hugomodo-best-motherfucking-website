@@ -1,0 +1,10 @@
+{{ with .Site.Author }}
+  <aside class="authors">
+    <header>
+      <h2>Author</h2>
+    </header>
+    <article class="author">
+      {{ partial "author.html" (dict "author" . "headerDepth" 4) }}
+    </article>
+  </aside>
+{{ end }}

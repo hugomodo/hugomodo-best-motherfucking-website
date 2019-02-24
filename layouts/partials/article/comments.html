@@ -1,0 +1,5 @@
+{{ if and (not .Site.IsServer) (and .Site.DisqusShortname (or .Params.show_comments (and .Site.Params.show_comments (not (isset .Params "show_comments"))))) }}
+<section id="hugoModule-articleComments">
+  {{ template "_internal/disqus.html" . }}
+</section>
+{{ end }}
