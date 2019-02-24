@@ -14,7 +14,7 @@ before_install:
   - git config --global user.email "travis@travis-ci.org"
   - git config --global user.name "Travis CI"
   - git clone https://github.com/hugomodo/hugomodo.git ../hugomodo
-  - git -C ../hugomodo checkout v0.1.1
+  - git -C ../hugomodo checkout master
 
 stages:
   - name: test
