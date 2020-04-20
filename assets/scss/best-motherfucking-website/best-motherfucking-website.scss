@@ -306,6 +306,17 @@ div#invmode{
   @extend .noselect;
 }
 
+@media screen and (max-width:1080px) {
+
+  div#contrast {
+    position: absolute;
+  }
+
+  div#invmode {
+    position: absolute;
+  }
+}
+
 span.sb{
   cursor: not-allowed;
   color: $shittyBlue;
